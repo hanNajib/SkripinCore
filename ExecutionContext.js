@@ -1,4 +1,4 @@
-// 1.1 Execution Context
+// 1. Execution Context
 // setiap kali javascript menjalankan kode, dia membuat sesuatu yang disebut Execution Context(EC)
 // - Variable enviroment -> menyimpan semua variable dan fungsi yang dibuat didalamnya
 // - Lexical enviroment -> menyimpan scope dan dan reference ke parent scope
