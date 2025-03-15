@@ -1,0 +1,53 @@
+<!-- 7.3 Debouncing & Throttling -->
+<!-- Debouncing & Throttling berguna untuk mengontrol eksekusi event yang sering terjadi, seperti scroll, resize, dan input. -->
+
+<!-- Debouncing -->
+<!-- Debouncing menunggu beberapa waktu sebelum mengeksekusi fungsi. -->
+<!-- Jika event dipanggil lagi dalam waktu tunggu, timer di-reset. -->
+
+<input type="search" id="search">
+<script>
+    function debounce(func, delay) {
+        let timer;
+        return function (...args) {
+            clearTimeout(timer)
+            timer = setTimeout(() => func.apply(this, args), delay)
+        }
+    }
+
+    const searchInput = document.getElementById("search")
+    searchInput.addEventListener("input", debounce((event) => {
+        console.log("Searching for:", event.target.value)
+    }, 500)) // tunggu 500ms setelah user berhenti mengetik
+</script>
+
+<!-- Ini mencegah eksekusi berulang saat user mengetik cepat -->
+
+
+
+<!-- Throttling -->
+
+<script>
+    function throttle(func, limit) {
+        let lastCall = 0;
+        return function(...args) {
+            let now = Date.now();
+            if(now - lastCall >= limit) {
+                lastCall = now
+                func.apply(this, args);
+            }
+        }
+    }
+
+    window.addEventListener("scroll", throttle(() => {
+        console.log("User Scrolling...")
+    }, 1000)) // hanya berjalan setiap 1 detik
+</script>
+
+<!-- Ini Mencegah terlalu banyak eksekusi saat user scrolling -->
+
+<style>
+    body {
+        min-height: 200vh;
+    }
+</style>

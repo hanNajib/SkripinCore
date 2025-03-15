@@ -1,0 +1,37 @@
+<!-- 7.2 Event Delegation -->
+<!-- Event Delegation adalah teknik di mana kita menangkap event dari parent-nya, bukan dari tiap anaknya langsung. -->
+<!-- Bagus untuk performance saat menangani banyak elemen dinamis! -->
+
+<!-- Tanpa Event Delegation (Buruk untuk Performance!): -->
+
+<button class="btn">Click Me!</button>
+<button class="btn">Click Me!</button>
+<button class="btn">Click Me!</button>
+
+<script>
+    document.querySelectorAll('.btn').forEach(btn => {
+        btn.addEventListener("click", () => {
+            console.log("button clicked!")
+        })
+    })
+
+    // Jika ada 100 tombol, ini akan menambahkan 100 event listener!
+</script>
+
+
+<!-- dengan Event Delegation ( Lebih Efisien ) -->
+<div id="parent">
+    <button class="btn2">Event Delegation</button>
+    <button class="btn2">Event Delegation</button>
+    <button class="btn2">Event Delegation</button>
+</div>
+
+<script>
+    document.getElementById('parent').addEventListener("click", (event) => {
+        if(event.target.classList.contains("btn2")) {
+            console.log("button clicked via delegation")
+        }
+    })
+
+    // Hanya 1 event listener untuk semua tombol didalam parent
+</script>
