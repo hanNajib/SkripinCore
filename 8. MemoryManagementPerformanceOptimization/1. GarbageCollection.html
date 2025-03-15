@@ -1,0 +1,31 @@
+<!-- 8.1 Garbage Collection (GC) -->
+<!-- JavaScript secara otomatis membersihkan memory dengan Garbage Collector (GC). -->
+<!-- Tapi kalau nggak hati-hati, kita bisa bikin Memory Leak! -->
+
+<!-- Memory Leak #1: Variabel Global yang Tidak Dibersihkan -->
+<script>
+    function leakyFunction() {
+        memoryLeak = [] // salah, tanpa let/const ini jadi variable global
+    }
+    
+    leakyFunction();
+    console.log(memoryLeak) // masih ada
+    // solusi : selalu gunakan let/const
+</script>
+
+
+<!-- Memory Leak #2: Event Listener Tidak Dihapus -->
+ <button id="btn">click</button>
+
+<script>
+    const btn = document.getElementById("btn")
+    function handleClick() {
+        console.log("click")
+    }
+
+    btn.addEventListener("click", handleClick)
+    btn.addEventListener("click", handleClick) // event listener terus bertambah
+
+    // solusi : hapus event listener dengan removeEventListener()
+    // btn.removeEventListener("click", handleClick)
+</script>
