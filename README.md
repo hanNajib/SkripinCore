@@ -10,7 +10,8 @@ Repositori ini membahas konsep Javascript Core serta Best Practices untuk mening
 5. Prototype Inheritance  
 6. Closures dalam Functional Programming  
 7. Event Delegation & Performance Optimization  
-8. Memory Management & Optimization  
+8. Memory Management & Optimization
+9. Javacript Design Pattern 
 
 ## 🚀 Cara Menggunakan  
 Clone repositori ini:  
